@@ -114,19 +114,25 @@ docker run -it -p 8080:8080 dp_github_service
 ```
 
 ### Option #2 - Maven and Java
-1. Clone the repository  
+
+#### Prerequisites
+
+- Maven
+- Java 17
+
+#### 1. Clone the repository  
 ```
 git clone https://github.com/DawidPerkowskiGit/At----a_Task
 ```
-2. Compile the project using Maven  
+#### 2. Compile the project using Maven  
 ```
 mvn compile
 ```
-3. Package the project using Maven  
+#### 3. Package the project using Maven  
 ```
 mvn clean package
 ```
-4. Run the Jar file  
+#### 4. Run the Jar file  
 ```
 java -jar .\target\At----a_Task-0.0.1-SNAPSHOT.jar
 ```
