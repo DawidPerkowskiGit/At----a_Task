@@ -41,6 +41,15 @@ Example data which can be fetched by calling the API.
 
 ### Valid input data response
 
+This is example data fetched by calling locally deployed application on port 8080.
+```
+localhost:8080/dawidperkowskigit
+```
+Also provided header "Accept" with value
+```
+Accept: application/json
+```
+
 ```
 {
     "username": "Dawid Perkowski",
