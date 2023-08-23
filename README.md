@@ -103,12 +103,17 @@ Example data which can be fetched by calling the API.
 git clone https://github.com/DawidPerkowskiGit/At----a_Task
 ```
 
-#### 2. Build docker image 
+#### 2. Go to the application catalogue
+```
+cd At----a_Task
+```
+
+#### 3. Build docker image 
 ```
 docker build --tag dp_github_service .
 ```
 
-#### 3. Run the docker container
+#### 4. Run the docker container
 ```
 docker run -it -p 8080:8080 dp_github_service
 ```
@@ -124,15 +129,19 @@ docker run -it -p 8080:8080 dp_github_service
 ```
 git clone https://github.com/DawidPerkowskiGit/At----a_Task
 ```
-#### 2. Compile the project using Maven  
+#### 2. Go to the application catalogue
+```
+cd At----a_Task
+```
+#### 3. Compile the project using Maven  
 ```
 mvn compile
 ```
-#### 3. Package the project using Maven  
+#### 4. Package the project using Maven  
 ```
 mvn clean package
 ```
-#### 4. Run the Jar file  
+#### 5. Run the Jar file  
 ```
 java -jar .\target\At----a_Task-0.0.1-SNAPSHOT.jar
 ```
