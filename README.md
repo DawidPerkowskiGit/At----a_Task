@@ -7,7 +7,7 @@
 
 ## About application
 
-Backend application which calls "GitHub Apps" (https://docs.github.com/en/apps) REST API and fetches specified user, not-forked repository list with every branch name and latest commit SHA value.
+Backend application which calls "GitHub Apps" (https://docs.github.com/en/apps) REST API and fetches specified user, non-forked repository list with every branch name and latest commit SHA value.
 
 
 ## Technologies
