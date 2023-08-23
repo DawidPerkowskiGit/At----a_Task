@@ -35,7 +35,7 @@ Accept:application/json
 Available data will be presented in JSON format
 
 
-## Example responses
+## Example response
 
 Example data which can be fetched by calling the API.
 
