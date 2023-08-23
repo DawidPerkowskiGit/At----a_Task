@@ -41,7 +41,7 @@ Example data which can be fetched by calling the API.
 
 ### Valid input data response
 
-This is example data fetched by calling locally deployed application on port 8080.
+This is example data fetched by calling exposed endpoint in locally deployed application on port 8080.
 ```
 localhost:8080/dawidperkowskigit
 ```
