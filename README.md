@@ -81,7 +81,7 @@ Example data which can be fetched by calling the API.
 ```
 
 
-### Provided other values for the "Accept header"
+### Provided other values for the "Accept" header
 ```
 {
     "status": 400,
