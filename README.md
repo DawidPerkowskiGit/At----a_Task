@@ -11,7 +11,7 @@ Backend application which calls "GitHub Apps" (https://docs.github.com/en/apps) 
 
 
 ## Technologies
-Java 17, Spring Web 3, Docker, Jackson, REST API
+Java 17, Spring Boot 3, Docker, Jackson, REST API
 
 
 ## Endpoint information
