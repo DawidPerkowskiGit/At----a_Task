@@ -1,7 +1,5 @@
 package com.example.ata_task.usernameservice;
 
-import com.example.ata_task.jsonresponse.JsonSerializable;
-
 import java.util.Map;
 
 /**

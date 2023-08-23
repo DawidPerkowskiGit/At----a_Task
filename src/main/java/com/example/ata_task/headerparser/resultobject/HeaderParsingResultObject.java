@@ -1,11 +1,11 @@
-package com.example.ata_task.headerparser;
+package com.example.ata_task.headerparser.resultobject;
 
-import com.example.ata_task.jsonresponse.JsonSerializable;
+import com.example.ata_task.jsonresponse.CustomJsonSerializable;
 
 /**
  * Implementation of this interface store data returned by HeaderParsing services
  */
-public interface HeaderParsingResultObject extends JsonSerializable {
+public interface HeaderParsingResultObject extends CustomJsonSerializable {
 
     public void setValidated(Boolean value);
 

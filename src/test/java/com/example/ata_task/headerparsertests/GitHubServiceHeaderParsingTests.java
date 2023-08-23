@@ -1,8 +1,8 @@
 package com.example.ata_task.headerparsertests;
 
-import com.example.ata_task.headerparser.GitHubServiceHeaderParserResultObject;
+import com.example.ata_task.headerparser.resultobject.GitHubServiceHeaderParserResultObject;
 import com.example.ata_task.headerparser.GithubServiceHeaderParser;
-import com.example.ata_task.headerparser.HeaderParsingResultObject;
+import com.example.ata_task.headerparser.resultobject.HeaderParsingResultObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;

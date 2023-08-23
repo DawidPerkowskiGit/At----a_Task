@@ -1,6 +1,8 @@
 package com.example.ata_task.headerparser;
 
 import com.example.ata_task.configuartion.GlobalVariables;
+import com.example.ata_task.headerparser.resultobject.GitHubServiceHeaderParserResultObject;
+import com.example.ata_task.headerparser.resultobject.HeaderParsingResultObject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +20,14 @@ import java.util.Map;
 @AllArgsConstructor
 @Getter
 @Setter
-public class GithubServiceHeaderParser implements HeaderParser{
+public class GithubServiceHeaderParser implements HeaderParser {
 
     Map<String, String> headers;
+
+    /**
+     * Parses the headers of the request
+     * @return Result of parsing depending on if the "Accept" header was present and on its value.
+     */
 
     public HeaderParsingResultObject parseHeaders() {
 

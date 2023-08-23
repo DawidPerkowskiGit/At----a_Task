@@ -1,6 +1,6 @@
 package com.example.ata_task.headerparser;
 
-import java.util.Map;
+import com.example.ata_task.headerparser.resultobject.HeaderParsingResultObject;
 
 /**
  * Common interface for parsing headers
