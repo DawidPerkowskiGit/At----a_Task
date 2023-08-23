@@ -50,6 +50,7 @@ Also provided header "Accept" with value
 Accept: application/json
 ```
 
+Response body:
 ```
 {
     "username": "Dawid Perkowski",
