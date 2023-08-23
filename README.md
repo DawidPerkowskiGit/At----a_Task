@@ -108,7 +108,7 @@ git clone https://github.com/DawidPerkowskiGit/At----a_Task
 docker build --tag dp_github_service .
 ```
 
-### 3. Run the docker container
+#### 3. Run the docker container
 ```
 docker run -it -p 8080:8080 dp_github_service
 ```
