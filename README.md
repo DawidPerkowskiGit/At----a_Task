@@ -101,12 +101,12 @@ Example data which can be fetched by calling the API.
 git clone https://github.com/DawidPerkowskiGit/At----a_Task
 ```
 
-### Build image witch docker
+### Build docker image 
 ```
 docker build --tag dp_github_service .
 ```
 
-### Run the container
+### Run the docker container
 ```
 docker run -it -p 8080:8080 dp_github_service
 ```
