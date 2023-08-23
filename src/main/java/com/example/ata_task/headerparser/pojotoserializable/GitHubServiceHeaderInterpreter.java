@@ -1,4 +1,4 @@
-package com.example.ata_task.headerparser.pojotoserialziable;
+package com.example.ata_task.headerparser.pojotoserializable;
 
 import com.example.ata_task.headerparser.resultobject.HeaderParsingResultObject;
 import com.example.ata_task.headerparser.resultobject.InvalidRequestJsonBody;
@@ -11,7 +11,7 @@ public class GitHubServiceHeaderInterpreter implements ParsingResultInterpreter 
 
     /**
      * Implementation for GitHub service header serialization
-     * @param headerInfo header information object
+     * @param headerInfo header information responseobject
      * @return GitHub Service header information ready for serialization
      */
     @Override

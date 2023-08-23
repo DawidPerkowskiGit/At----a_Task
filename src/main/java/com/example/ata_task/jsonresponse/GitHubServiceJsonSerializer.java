@@ -12,7 +12,7 @@ public class GitHubServiceJsonSerializer implements ObjectToJsonSerializer {
     /**
      * Returns an Object in JSON format
      *
-     * @param object Java object containing Exchange or Currency data
+     * @param object Java responseobject containing Exchange or Currency data
      * @return Requested data in JSON format
      */
 
@@ -23,7 +23,7 @@ public class GitHubServiceJsonSerializer implements ObjectToJsonSerializer {
         try {
             exchangesToJson = objectMapper.writeValueAsString(object);
         } catch (Exception e) {
-            System.out.println("Could not map object to JSON. Exception: " + e);
+            System.out.println("Could not map responseobject to JSON. Exception: " + e);
         }
 
         return exchangesToJson;

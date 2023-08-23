@@ -14,5 +14,7 @@ public class GlobalVariables {
 
     public final static String INVALID_GH_SERVICE_HEADER_FORMAT_VALUE = "application/xml";
 
+    public final static String API_URL = "https://api.github.com";
+
 
 }

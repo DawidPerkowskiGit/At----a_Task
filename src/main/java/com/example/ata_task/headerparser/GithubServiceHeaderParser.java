@@ -26,50 +26,63 @@ public class GithubServiceHeaderParser implements HeaderParser {
 
     /**
      * Parses the headers of the request
+     *
      * @return Result of parsing depending on if the "Accept" header was present and on its value.
      */
 
     public HeaderParsingResultObject parseHeaders() {
 
         HeaderParsingResultObject parsingResult = new GitHubServiceHeaderParserResultObject();
-
         /**
          * Missing "Accept" header
          */
-        if (this.headers.containsKey(GlobalVariables.VALID_GH_SERVICE_HEADER) == false) {
-            parsingResult.setValidated(false);
-            parsingResult.setStatus(400);
-            parsingResult.setValidationResult("Missing header information");
-            return parsingResult;
+
+        try {
+            if (this.headers.containsKey(GlobalVariables.VALID_GH_SERVICE_HEADER) == false) {
+                parsingResult.setValidation(false);
+                parsingResult.setStatus(400);
+                parsingResult.setValidationResult("Missing header information");
+                return parsingResult;
+            }
+        } catch (Exception e) {
+            System.out.println("Cannot perform headers parsing. Exception happened when searching for 'accept' header. Exception: " + e);
+        }
+
+
+        try {
+            /**
+             * "Accept" header value is valid
+             */
+            if (this.headers.get(GlobalVariables.VALID_GH_SERVICE_HEADER).equals(GlobalVariables.VALID_GH_SERVICE_HEADER_FORMAT_VALUE)) {
+                parsingResult.setValidation(true);
+                parsingResult.setStatus(200);
+                parsingResult.setValidationResult("Provided valid header information");
+                return parsingResult;
+            }
+        } catch (Exception e) {
+            System.out.println("Cannot perform headers parsing. Exception happened when looking for 'accept:application/json' header information. Exception: " + e);
+        }
+
+        try {
+            /**
+             * "Accept" header value is invalid
+             */
+            if (this.headers.get(GlobalVariables.VALID_GH_SERVICE_HEADER).equals(GlobalVariables.INVALID_GH_SERVICE_HEADER_FORMAT_VALUE)) {
+                parsingResult.setValidation(false);
+                parsingResult.setStatus(406);
+                parsingResult.setValidationResult("XML format is unavailable");
+                return parsingResult;
+            }
+        } catch (Exception e) {
+            System.out.println("Cannot perform headers parsing. Exception happened when looking for 'accept:application/xml' header information. Exception: " + e);
         }
 
         /**
-         * "Accept" header value is valid
+         * "Accept" header value is unrecognizable. Return default values
          */
-        if (this.headers.get(GlobalVariables.VALID_GH_SERVICE_HEADER).equals(GlobalVariables.VALID_GH_SERVICE_HEADER_FORMAT_VALUE)) {
-            parsingResult.setValidated(true);
-            parsingResult.setStatus(200);
-            parsingResult.setValidationResult("Provided valid header information");
-            return parsingResult;
-        }
-
-        /**
-         * "Accept" header value is invalid
-         */
-        if (this.headers.get(GlobalVariables.VALID_GH_SERVICE_HEADER).equals(GlobalVariables.INVALID_GH_SERVICE_HEADER_FORMAT_VALUE)) {
-            parsingResult.setValidated(false);
-            parsingResult.setStatus(406);
-            parsingResult.setValidationResult("XML format is unavailable");
-            return parsingResult;
-        }
-
-        /**
-         * "Accept" header value is unrecognizable
-         */
-        parsingResult.setValidated(false);
+        parsingResult.setValidation(false);
         parsingResult.setStatus(400);
         parsingResult.setValidationResult("Unrecognizable request, header value is invalid");
         return parsingResult;
-
     }
 }

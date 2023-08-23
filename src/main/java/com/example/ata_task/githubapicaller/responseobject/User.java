@@ -1,6 +1,7 @@
-package com.example.ata_task.githubapicaller;
+package com.example.ata_task.githubapicaller.responseobject;
 
 import com.example.ata_task.jsonresponse.CustomJsonSerializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GitHubUser implements CustomJsonSerializable {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class User implements CustomJsonSerializable {
 
     private String username;
 

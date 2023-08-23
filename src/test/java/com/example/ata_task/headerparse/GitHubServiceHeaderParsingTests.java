@@ -1,4 +1,4 @@
-package com.example.ata_task.headerparsertests;
+package com.example.ata_task.headerparse;
 
 import com.example.ata_task.headerparser.resultobject.GitHubServiceHeaderParserResultObject;
 import com.example.ata_task.headerparser.GithubServiceHeaderParser;
@@ -35,7 +35,7 @@ public class GitHubServiceHeaderParsingTests {
     @DirtiesContext
     void shouldReturnMissingHeaderInformationResponse() {
         HeaderParsingResultObject correctResult = new GitHubServiceHeaderParserResultObject();
-        correctResult.setValidated(false);
+        correctResult.setValidation(false);
         correctResult.setStatus(400);
         correctResult.setValidationResult("Missing header information");
 
@@ -43,14 +43,14 @@ public class GitHubServiceHeaderParsingTests {
         HeaderParsingResultObject parsingResult = parser.parseHeaders();
         assertThat(correctResult.getValidationResult()).isEqualTo(parsingResult.getValidationResult());
         assertThat(correctResult.getStatus()).isEqualTo(parsingResult.getStatus());
-        assertThat(correctResult.getValidated()).isEqualTo(parsingResult.getValidated());
+        assertThat(correctResult.ifValidated()).isEqualTo(parsingResult.ifValidated());
     }
 
     @Test
     @DirtiesContext
     void shouldReturnInvalidHeaderInformationResponse() {
         HeaderParsingResultObject correctResult = new GitHubServiceHeaderParserResultObject();
-        correctResult.setValidated(true);
+        correctResult.setValidation(true);
         correctResult.setStatus(200);
         correctResult.setValidationResult("Provided valid header information");
         headers.put("accept", "application/json");
@@ -59,14 +59,14 @@ public class GitHubServiceHeaderParsingTests {
         HeaderParsingResultObject parsingResult = parser.parseHeaders();
         assertThat(correctResult.getValidationResult()).isEqualTo(parsingResult.getValidationResult());
         assertThat(correctResult.getStatus()).isEqualTo(parsingResult.getStatus());
-        assertThat(correctResult.getValidated()).isEqualTo(parsingResult.getValidated());
+        assertThat(correctResult.ifValidated()).isEqualTo(parsingResult.ifValidated());
     }
 
     @Test
     @DirtiesContext
     void shouldReturnXmlFormatUnavailableResponse() {
         HeaderParsingResultObject correctResult = new GitHubServiceHeaderParserResultObject();
-        correctResult.setValidated(false);
+        correctResult.setValidation(false);
         correctResult.setStatus(406);
         correctResult.setValidationResult("XML format is unavailable");
         headers.put("accept", "application/xml");
@@ -75,14 +75,14 @@ public class GitHubServiceHeaderParsingTests {
         HeaderParsingResultObject parsingResult = parser.parseHeaders();
         assertThat(correctResult.getValidationResult()).isEqualTo(parsingResult.getValidationResult());
         assertThat(correctResult.getStatus()).isEqualTo(parsingResult.getStatus());
-        assertThat(correctResult.getValidated()).isEqualTo(parsingResult.getValidated());
+        assertThat(correctResult.ifValidated()).isEqualTo(parsingResult.ifValidated());
     }
 
     @Test
     @DirtiesContext
     void shouldReturnAcceptHeaderUnrecognizableResponse() {
         HeaderParsingResultObject correctResult = new GitHubServiceHeaderParserResultObject();
-        correctResult.setValidated(false);
+        correctResult.setValidation(false);
         correctResult.setStatus(400);
         correctResult.setValidationResult("Unrecognizable request, header value is invalid");
         headers.put("accept", "zxczx/xmasdasdl");
@@ -91,6 +91,6 @@ public class GitHubServiceHeaderParsingTests {
         HeaderParsingResultObject parsingResult = parser.parseHeaders();
         assertThat(correctResult.getValidationResult()).isEqualTo(parsingResult.getValidationResult());
         assertThat(correctResult.getStatus()).isEqualTo(parsingResult.getStatus());
-        assertThat(correctResult.getValidated()).isEqualTo(parsingResult.getValidated());
+        assertThat(correctResult.ifValidated()).isEqualTo(parsingResult.ifValidated());
     }
 }

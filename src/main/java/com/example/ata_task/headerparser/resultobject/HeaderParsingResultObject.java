@@ -7,9 +7,9 @@ import com.example.ata_task.jsonresponse.CustomJsonSerializable;
  */
 public interface HeaderParsingResultObject extends CustomJsonSerializable {
 
-    public void setValidated(Boolean value);
+    public void setValidation(Boolean value);
 
-    public Boolean getValidated();
+    public Boolean ifValidated();
 
     public void setStatus(int value);
 

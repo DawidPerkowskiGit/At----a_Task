@@ -23,11 +23,11 @@ public class GitHubServiceHeaderParserResultObject implements HeaderParsingResul
         this.validationResult = validationResult;
     }
 
-    public Boolean getValidated() {
+    public Boolean ifValidated() {
         return validated;
     }
 
-    public void setValidated(Boolean validated) {
+    public void setValidation(Boolean validated) {
         this.validated = validated;
     }
 

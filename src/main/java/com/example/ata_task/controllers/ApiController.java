@@ -4,6 +4,7 @@ import com.example.ata_task.usernameservice.GitHubUsernameService;
 import com.example.ata_task.usernameservice.UsernameService;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -15,11 +16,11 @@ public class ApiController {
     /**
      * Fetches user's GutHub repositories and filters out forked ones
      * @param headers List of headers
-     * @return User's non-forked repositories and their latest commit SHA.
+     * @return GitHubUser's non-forked repositories and their latest commit SHA.
      */
     @GetMapping("/{username}")
     String getUserAndRepos(@RequestHeader Map<String, String> headers,
-    @PathVariable String username) {
+    @PathVariable String username) throws IOException, InterruptedException {
         UsernameService usernameService = new GitHubUsernameService();
         return usernameService.processRequest(username, headers);
     }
