@@ -7,7 +7,7 @@
 
 ## About application
 
-Backend application which calls "GitHub Apps" (https://docs.github.com/en/apps) REST API and fetches specified user, his repository list with every branch name and latest commit SHA value.
+Backend application which calls "GitHub Apps" (https://docs.github.com/en/apps) REST API and fetches specified user, non-forked repository list with every branch name and latest commit SHA value.
 
 
 ## Technologies
@@ -35,7 +35,7 @@ Accept:application/json
 Available data will be presented in JSON format
 
 
-## Example responses
+## Example response
 
 Example data which can be fetched by calling the API.
 
@@ -92,21 +92,48 @@ Example data which can be fetched by calling the API.
 
 ## Installation
 
-### Prerequisites
+### Option #1 - Docker
+
+#### Prerequisites
 
 - Docker
 
-### Clone the repository
+#### 1. Clone the repository
 ```
 git clone https://github.com/DawidPerkowskiGit/At----a_Task
 ```
 
-### Build image witch docker
+#### 2. Build docker image 
 ```
 docker build --tag dp_github_service .
 ```
 
-### Run the container
+### 3. Run the docker container
 ```
 docker run -it -p 8080:8080 dp_github_service
 ```
+
+### Option #2 - Maven and Java
+
+#### Prerequisites
+
+- Maven
+- Java 17
+
+#### 1. Clone the repository  
+```
+git clone https://github.com/DawidPerkowskiGit/At----a_Task
+```
+#### 2. Compile the project using Maven  
+```
+mvn compile
+```
+#### 3. Package the project using Maven  
+```
+mvn clean package
+```
+#### 4. Run the Jar file  
+```
+java -jar .\target\At----a_Task-0.0.1-SNAPSHOT.jar
+```
+
