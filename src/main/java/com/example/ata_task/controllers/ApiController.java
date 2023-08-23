@@ -20,7 +20,7 @@ public class ApiController {
      */
     @GetMapping("/{username}")
     String getUserAndRepos(@RequestHeader Map<String, String> headers,
-    @PathVariable String username) throws IOException, InterruptedException {
+    @PathVariable String username) {
         UsernameService usernameService = new GitHubUsernameService();
         return usernameService.processRequest(username, headers);
     }

@@ -32,7 +32,7 @@ public class GitHubUsernameService implements UsernameService {
      * @param headers  HTTP headers
      * @return List of single user's GitHub repositories, their branches and latest commit SHA in JSON format
      */
-    public String processRequest(String username, Map<String, String> headers) throws IOException, InterruptedException {
+    public String processRequest(String username, Map<String, String> headers) {
         HeaderParser headerParser = new GithubServiceHeaderParser(headers);
         HeaderParsingResultObject headerParsingResult = headerParser.parseHeaders();
 
@@ -62,7 +62,7 @@ public class GitHubUsernameService implements UsernameService {
 
         if (headerParsingResult.ifValidated()) {
             try {
-                gitHubUser = gitHubApiCaller.callApiReturnUser(GlobalVariables.API_URL + "/users/" + username, gitHubUser);
+                gitHubUser = gitHubApiCaller.callApiReturnUser(GlobalVariables.API_URL + "/users/" + username);
 
             } catch (Exception e) {
                 System.out.println("Could not call the API. Exception: " + e);
@@ -100,7 +100,7 @@ public class GitHubUsernameService implements UsernameService {
 
         List<GitHubRepository> repositoryList = new ArrayList<>();
         try {
-            repositoryList = gitHubApiCaller.callApiReturnRepositories(gitHubUser.getRepos_url(), repositoryList);
+            repositoryList = gitHubApiCaller.callApiReturnRepositories(gitHubUser.getRepos_url());
         } catch (Exception e) {
             System.out.println("Could not extract repositories");
         }
@@ -118,7 +118,7 @@ public class GitHubUsernameService implements UsernameService {
                     repository.setName(gitHubRepository.getName());
                     repository.setOwner(gitHubRepository.getOwner().getLogin());
                     List<Branch> branchList = new ArrayList<>();
-                    branchList = gitHubApiCaller.callApiReturnBranches(GlobalVariables.API_URL + "/repos/" + username + "/" + repository.getName() + "/branches", branchList);
+                    branchList = gitHubApiCaller.callApiReturnBranches(GlobalVariables.API_URL + "/repos/" + username + "/" + repository.getName() + "/branches");
                     repository.setBranches(branchList);
                     user.addRepository(repository);
                 }

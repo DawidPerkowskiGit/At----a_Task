@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,41 +19,81 @@ import java.util.List;
  */
 public class GitHubApiCaller {
 
-    public GitHubUser callApiReturnUser(String apiUrl, GitHubUser object) throws IOException, InterruptedException {
+    /**
+     * Calls GitHub REST API and retrieves GitHubUser data
+     *
+     * @param apiUrl URL to the API
+     * @return Object of GitHubUser type
+     */
+    public GitHubUser callApiReturnUser(String apiUrl) {
 
-        String apiResponseBody = getRequestBody(apiUrl);
-        ObjectMapper mapper = new ObjectMapper();
-        GitHubUser requestObject = mapper.readValue(apiResponseBody, object.getClass());
-
-        return requestObject;
+        try {
+            String apiResponseBody = getRequestBody(apiUrl);
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(apiResponseBody, GitHubUser.class);
+        } catch (Exception e) {
+            System.out.println("Exception occurred while trying to get REST API GitHubUser response body. Exception: " + e);
+        }
+        return new GitHubUser();
     }
 
+    /**
+     * Calls GitHub REST API and retrieves GitHubRepository data
+     *
+     * @param apiUrl URL to the API
+     * @return Object of GitHubRepository type
+     */
 
+    public List<GitHubRepository> callApiReturnRepositories(String apiUrl) {
 
-    public List<GitHubRepository> callApiReturnRepositories(String apiUrl, List<GitHubRepository> object) throws IOException, InterruptedException {
+        try {
+            String apiResponseBody = getRequestBody(apiUrl);
+            ObjectMapper mapper = new ObjectMapper();
 
-        String apiResponseBody = getRequestBody(apiUrl);
-        ObjectMapper mapper = new ObjectMapper();
-        List<GitHubRepository> requestList = mapper.readValue(apiResponseBody, mapper.getTypeFactory().constructCollectionType(List.class, GitHubRepository.class));
-
-        return requestList;
+            return mapper.readValue(apiResponseBody, mapper.getTypeFactory().constructCollectionType(List.class, GitHubRepository.class));
+        } catch (Exception e) {
+            System.out.println("Exception occurred while trying to get REST API List<GitHubRepository> response body. Exception: " + e);
+        }
+        return new ArrayList<>();
     }
 
-    public List<Branch> callApiReturnBranches(String apiUrl, List<Branch> object) throws IOException, InterruptedException {
+    /**
+     * Calls GitHub REST API and retrieves Branch data
+     *
+     * @param apiUrl URL to the API
+     * @return Object of Branch type
+     */
 
-        String apiResponseBody = getRequestBody(apiUrl);
-        ObjectMapper mapper = new ObjectMapper();
-        List<Branch> requestList = mapper.readValue(apiResponseBody, mapper.getTypeFactory().constructCollectionType(List.class, Branch.class));
+    public List<Branch> callApiReturnBranches(String apiUrl) {
 
-        return requestList;
+        try {
+            String apiResponseBody = getRequestBody(apiUrl);
+            ObjectMapper mapper = new ObjectMapper();
+
+            return mapper.readValue(apiResponseBody, mapper.getTypeFactory().constructCollectionType(List.class, Branch.class));
+        } catch (Exception e) {
+            System.out.println("Exception occurred while trying to get REST API List<Branch> response body. Exception: " + e);
+        }
+        return new ArrayList<>();
     }
-    private static String getRequestBody(String apiUrl) throws IOException, InterruptedException {
+
+    /**
+     * Calls GitHub REST API URL and fetches JSON body data
+     *
+     * @param apiUrl URL of the REST API
+     * @return JSON data
+     */
+    private static String getRequestBody(String apiUrl) {
         String apiResponseBody = "";
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUrl)).build();
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUrl)).build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        apiResponseBody = response.body();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            apiResponseBody = response.body();
+        } catch (Exception e) {
+            System.out.println("Exception occurred when trying to request HTTP data");
+        }
         return apiResponseBody;
     }
 
