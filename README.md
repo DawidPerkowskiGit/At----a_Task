@@ -51,7 +51,7 @@ Accept: application/json
 ```
 
 Response body:
-```
+```json
 {
     "username": "Dawid Perkowski",
     "repositories": [
@@ -75,7 +75,7 @@ Response body:
 ```
 
 ### Provided value "application/xml" for the "Accept" header
-```
+```json
 {
     "status": 406,
     "message": "XML format is unavailable"
@@ -83,7 +83,7 @@ Response body:
 ```
 
 ### User does not exist
-```
+```json
 {
     "status": 404,
     "message": "User could not be found"
@@ -92,7 +92,7 @@ Response body:
 
 
 ### Provided other values for the "Accept" header
-```
+```json
 {
     "status": 400,
     "message": "Unrecognizable request, header value is invalid"
